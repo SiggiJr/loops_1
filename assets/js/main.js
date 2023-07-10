@@ -104,13 +104,16 @@ const outputContainer = document.querySelector(".loop_me_output");
 loopMeForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const loopMeInputValue = loopMeInput.value;
-  let loopCount = "";
+  // let loopCount = "";
+  const loopArray = ["L", "p"];
 
   for (let i = 0; i < loopMeInputValue; i++) {
-    loopCount += "o";
+    // loopCount += "o";
+    loopArray.splice(1, 0, "o");
   }
-
-  outputContainer.textContent = `L${loopCount}p`;
+  console.log(loopArray.join(""));
+  outputContainer.textContent = loopArray.join("");
+  // outputContainer.textContent = `L${loopCount}p`;
 });
 
 //# Level_3_1
@@ -143,6 +146,9 @@ const devidableCheck = (array) => {
     for (let n = 2; n < array[i]; n++) {
       const result = array[i] / n;
       if (Number.isInteger(result)) {
+        // if (array[i] % n === 0) {
+        // const result = array[i] / n;
+
         const outputText = `${array[i]} is devidable by ${n}. The result is: ${result}`;
         devidableOutputContainer.innerHTML += `<p>${outputText}</p>`;
       }
