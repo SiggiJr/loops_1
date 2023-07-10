@@ -16,5 +16,46 @@
     </form>
     <div class="loop_me_output" style="color: rgb(50, 255, 47); font-size: 2rem"></div>
     <div class="devidable_output_container"></div>
+    <div class="loop_3_4">
+      <h1>Gib mir eine Zahl</h1>
+      <p>
+        Ich werde ALLE Zahlen von 0 bis zu dieser Zahl addieren,<br />
+        wenn sie durch eine der ausgewählten Zahlen teilbar ist!
+      </p>
+      <form class="coutn_me_form" style="margin-bottom: 50px">
+        <div>
+          <label for="max_value">Maximale Zahl</label>
+        </div>
+        <input type="number" name="max_value" id="max_value" />
+        <div>
+          <label for="first_number">Erste Zahl</label>
+        </div>
+        <select name="first_number" id="first_number">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+        <div>
+          <label for="second_number">Zweite Zahl</label>
+        </div>
+        <select name="second_number" id="second_number">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+        <button type="submit">Count Me</button>
+        <div class="count_me_output_container"></div>
+      </form>
+    </div>
   </body>
 </html>

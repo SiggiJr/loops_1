@@ -95,26 +95,25 @@ const imageArray = () => {
 imageArray();
 
 //# Level_2_2
-console.log("%c Level_2_2", "color: white; background-color: red");
+// console.log("%c Level_2_2", "color: white; background-color: red");
 
-const loopMeForm = document.querySelector(".loop_me_form");
-const loopMeInput = document.querySelector("#number_input");
-const outputContainer = document.querySelector(".loop_me_output");
+// const loopMeForm = document.querySelector(".loop_me_form");
+// const loopMeInput = document.querySelector("#number_input");
+// const outputContainer = document.querySelector(".loop_me_output");
 
-loopMeForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const loopMeInputValue = loopMeInput.value;
-  // let loopCount = "";
-  const loopArray = ["L", "p"];
+// loopMeForm.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   const loopMeInputValue = loopMeInput.value;
+//   // let loopCount = "";
+//   const loopArray = ["L", "p"];
 
-  for (let i = 0; i < loopMeInputValue; i++) {
-    // loopCount += "o";
-    loopArray.splice(1, 0, "o");
-  }
-  console.log(loopArray.join(""));
-  outputContainer.textContent = loopArray.join("");
-  // outputContainer.textContent = `L${loopCount}p`;
-});
+//   for (let i = 0; i < loopMeInputValue; i++) {
+//     // loopCount += "o";
+//     loopArray.splice(1, 0, "o");
+//   }
+//   outputContainer.textContent = loopArray.join("");
+//   // outputContainer.textContent = `L${loopCount}p`;
+// });
 
 //# Level_3_1
 console.log("%c Level_3_1", "color: white; background-color: red");
@@ -157,3 +156,81 @@ const devidableCheck = (array) => {
 };
 
 devidableCheck(numArr);
+
+//# Level_3_3
+
+console.log("%c Level_3_3", "color: white; background-color: red");
+
+const loopMeForm = document.querySelector(".loop_me_form");
+const loopMeInput = document.querySelector("#number_input");
+const outputContainer = document.querySelector(".loop_me_output");
+
+loopMeForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const loopMeInputValue = Number(loopMeInput.value);
+  if (loopMeInputValue === 0) {
+    outputContainer.innerHTML = `<p style="color: red">Loop mit 0 kann nicht ausgeführt werden!</p>`;
+    return;
+  }
+  // let loopCount = "";
+  const loopArray = ["L", "p"];
+
+  for (let i = 0; i < loopMeInputValue; i++) {
+    // loopCount += "o";
+    // if (loopMeInputValue % 2 === 0) {
+    //   loopArray.splice(1, 0, "o");
+    // } else if (loopMeInputValue % 2 === 1) {
+    //   if (i % 2 === 1) {
+    //     loopArray.splice(1, 0, "0");
+    //   } else if (i % 2 === 0) {
+    //     loopArray.splice(1, 0, "o");
+    //   }
+    // }
+
+    if (loopMeInputValue % 2 === 0) {
+      loopArray.splice(1, 0, "o");
+    } else if (loopMeInputValue % 2 === 1 && i % 2 === 1) {
+      loopArray.splice(1, 0, "0");
+    } else if (loopMeInputValue % 2 === 1 && i % 2 === 0) {
+      loopArray.splice(1, 0, "o");
+    }
+  }
+  outputContainer.textContent = loopArray.join("");
+  // outputContainer.textContent = `L${loopCount}p`;
+});
+
+//# Level_3_4
+
+const countMeForm = document.querySelector(".coutn_me_form");
+const maxNumberInput = document.querySelector("#max_value");
+const firstNumberInput = document.querySelector("#first_number");
+const secondNumberInput = document.querySelector("#second_number");
+
+const countMeOutputContainer = document.querySelector(".count_me_output_container");
+
+countMeForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  let maxNumberInputValue = maxNumberInput.value;
+  const firstNumberInputValue = Number(firstNumberInput.value);
+  const secondNumberInputValue = Number(secondNumberInput.value);
+  let result = 0;
+
+  if (maxNumberInputValue === "") {
+    countMeOutputContainer.textContent = "Bitte mach eine gültige Eingabe!";
+    return;
+  }
+
+  if (firstNumberInputValue === secondNumberInputValue) {
+    countMeOutputContainer.textContent = "Bitte wähle zwei unterschiedliche Werte zur Überprüfung aus!";
+    return;
+  }
+
+  maxNumberInputValue = Number(maxNumberInput.value);
+
+  for (let i = 0; i < maxNumberInputValue; i++) {
+    if (i % firstNumberInputValue === 0 || i % secondNumberInputValue === 0) {
+      result += i;
+    }
+  }
+  countMeOutputContainer.textContent = result;
+});
